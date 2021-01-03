@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/users',userRouter)
 app.use('/api/uploads', uploadRouter)
-//app.use('/api/products',productRoute)
+
 app.get('/api/products', async (req,res)=>{
 
     const products = await Product.find({})
@@ -40,7 +40,7 @@ app.get('/api/products', async (req,res)=>{
 app.post('/api/products',isAuth, isAdmin, async (req,res)=>{
     const products = await Product.find({})
     const product = new Product({
-        //id:products.length + 1,
+       
         name:req.body.name,
         avatar: req.body.avatar,
         price:req.body.price,
@@ -228,5 +228,7 @@ app.get('/orders/api/config/paypal', async (req,res)=>{
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req,res)=>res.sendFile(path.join(__dirname, '/frontend/build/index.html')))
 
 app.listen(5000, ()=>console.log('Server started at http://localhost:5000'))
