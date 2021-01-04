@@ -230,11 +230,13 @@ function CartPage(props) {
             items.map((item) => {
               return (
                 <div className="cart__item">
+                  <Link to={`/products/${item._id}`}>
                   <img
                     style={{ float: "left", "margin-right": "1rem" }}
                     src={item.avatar}
                   />
-                  <h2>{item.name}</h2>
+                  </Link>
+                  <Link className="Link" to={`/products/${item._id}`}> <h2>{item.name}</h2></Link>
                   <label htmlFor="qty">Quantity:</label>
 
                   <select
@@ -246,7 +248,7 @@ function CartPage(props) {
                       dispatch(addItem(item._id, e.target.value))
                     }
                   >
-                    {Array(item.available)
+                    {Array(item.available>10 ? 10 : item.available)
                       .fill(null)
                       .map((x, index) => {
                         return (

@@ -32,12 +32,6 @@ function ProductAdd(){
         history.push('/')
     }
     
-    useEffect(()=>{
-
-        if(productData){
-        
-        alert('Product added')}
-    },[productData])
 
     useEffect(()=>{
        dispatch(getRequest())

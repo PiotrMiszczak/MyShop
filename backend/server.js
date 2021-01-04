@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 import config from '../config'
 import mongoose from 'mongoose'
 import userRouter from './routes/userRoute'
-//import productRoute from '../routes/productRoute'
 import bodyParser from 'body-parser'
 import Product from './models/productModel'
 import Order from './models/orderModel'
@@ -87,7 +86,7 @@ app.get("/products/api/products/:_id", async (req,res)=>{
    if(product){
        res.send(product)}
     else{
-        res.status(404).send({msg:'NOT xcxcFOUND'})
+        res.status(404).send({msg:'NOT FOUND'})
     }
 });
 
@@ -99,7 +98,7 @@ app.get("/api/products/:_id",async (req,res)=>{
    if(product){
        res.send(product)}
     else{
-        res.status(404).send({msg:'NOT xcxcFOUND'})
+        res.status(404).send({msg:'NOT FOUND'})
     }
 });
 app.delete("/api/products/:_id",isAuth, isAdmin, async (req,res)=>{
@@ -123,7 +122,7 @@ app.get("/cart/api/products/:_id", async (req,res)=>{
    if(product){
        res.send(product)}
     else{
-        res.status(404).send({msg:'NOT xcxcFOUND'})
+        res.status(404).send({msg:'NOT FOUND'})
     }
 });
 
@@ -140,6 +139,7 @@ app.post("/api/orders",isAuth, async (req,res)=>{
         totalPrice: req.body.totalPrice,
         deliveryPrice: req.body.deliveryPrice
  })
+
  const createdOrder = await newOrder.save()
      res.status(200).send({message:'Order created', data:createdOrder})
 }

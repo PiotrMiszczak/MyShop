@@ -108,7 +108,7 @@ useEffect(()=>{
                     src={item.avatar}
                   />
                   <h2>{item.name}</h2>
-                  <p>Price: {item.price}</p>
+                  <p>Price: {item.price} $</p>
                   <p>Quantity: {item.qty}</p>
                 </div>
               );
@@ -122,7 +122,7 @@ useEffect(()=>{
             Delivery price:{" "}
             {order.deliveryPrice == 0
               ? "free"
-              : order.deliveryPrice + "$(free for orders above 200$)"}
+              : order.deliveryPrice + " $(free for orders above 200$)"}
           </p>
           <span>Total: {order.totalPrice}$</span>
           {!order.isPaid ?

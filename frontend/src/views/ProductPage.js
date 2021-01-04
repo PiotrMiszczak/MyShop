@@ -60,12 +60,12 @@ function Product(props){
         <label htmlFor="qty">Quantity:</label>
         
         <select style={{'margin-left':'1rem'}} name="qty" id="qty" value={qty} onChange={(e)=>setQty(e.target.value)}>
-            {Array(data.qty).fill(null).map((x, index) => {
+            {Array(product.available>10 ? 10 : product.available).fill(null).map((x, index) => {
                 return <option key={index+1} value={index+1}>{index+1}</option>
             })}
         </select>
        
-        <Link to={`/cart/${_id}?qty=${qty}`}><button disabled={data.qty>0 ? false : true} className="product__actions-button"><FontAwesomeIcon icon={faPlusCircle} /> {data.qty>0 ? 'Add to chart' : 'Out of stock'}</button></Link>
+        <Link className="Link" to={`/cart/${_id}?qty=${qty}`}><button disabled={data.qty>0 ? false : true} className="product__actions-button"><FontAwesomeIcon icon={faPlusCircle} /> {data.qty>0 ? 'Add to cart' : 'Out of stock'}</button></Link>
         
         </div>
         </div>
