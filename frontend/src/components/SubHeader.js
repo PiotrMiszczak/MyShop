@@ -1,5 +1,5 @@
 import React from 'react'
-import purchase from '../images/purchase.svg'
+
 
 function SubHeader(){
     return(

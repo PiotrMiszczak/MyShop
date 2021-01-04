@@ -1,1 +1,0 @@
-mongodb+srv://myshop:myshop@cluster0.bpvap.mongodb.net/myshop?retryWrites=true&w=majority

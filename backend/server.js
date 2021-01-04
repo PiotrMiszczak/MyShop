@@ -9,6 +9,8 @@ import Order from './models/orderModel'
 import {isAuth, isAdmin} from './util'
 import uploadRouter from './routes/uploadRoute';
 import path from 'path'
+import data from './data'
+
 
 
 dotenv.config();
@@ -34,6 +36,11 @@ app.get('/api/products', async (req,res)=>{
     const products = await Product.find({})
     res.send(products)
     })
+
+app.get('/api/products/sample', async (req,res)=>{
+        const createdProducts = await Product.insertMany(data.products)
+        res.send({createdProducts})
+        })
   
 
 app.post('/api/products',isAuth, isAdmin, async (req,res)=>{

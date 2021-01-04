@@ -2,29 +2,19 @@ import express from 'express'
 import User from '../models/userModel'
 import {getToken} from '../util'
 import bcrypt from 'bcrypt'
+import data from '../data'
+
 
 const router = express.Router();
 
-router.get("/createadmin", async (req, res)=>{
-    try {
-        const user = new User({
-          name: 'Piotr',
-          email: 'miszpiotr@wp.pl',
-          password: '1234',
-          isAdmin: true,
-        });
-        const newUser = await user.save();
-        res.send(newUser);
-      }
-    catch(error){
-        console.log('err')
-    }
+router.get('/sample', async (req,res)=>{
+  await User.remove({})
+  const createdUsers = await User.insertMany(data.users)
+  res.send({createdUsers})
+
 })
 
 router.post("/signin", async (req, res)=>{
-   
-    
-        
         const user = await User.findOne({
           email: req.body.email,
                })

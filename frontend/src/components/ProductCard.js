@@ -23,7 +23,7 @@ const _id = props._id
     return(
         <div onMouseEnter={()=>{setHover(true)}} onMouseLeave={()=>{setHover(false)}} className="main__product">
       <Link to={`/products/${props._id}`}>{mask}</Link>
-        <img alt='bird' className="product__image" src={props.image}></img>
+        <img alt='product image' className="product__image" src={props.image}></img>
         <div className="main__product-data">
         <p>{props.name}</p>
         <p><FontAwesomeIcon icon={faCoins} /> {props.price}$</p>

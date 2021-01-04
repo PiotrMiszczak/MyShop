@@ -5,7 +5,7 @@ import { addItem, removeItem } from "../actions/actions";
 import { faCoins, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
-import { emptyCart } from "../images/emptyCart.svg";
+
 
 function CartPage(props) {
   const { _id } = useParams();
@@ -232,6 +232,7 @@ function CartPage(props) {
                 <div className="cart__item">
                   <Link to={`/products/${item._id}`}>
                   <img
+                  alt='product image'
                     style={{ float: "left", "margin-right": "1rem" }}
                     src={item.avatar}
                   />

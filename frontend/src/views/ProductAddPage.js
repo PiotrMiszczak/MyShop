@@ -142,7 +142,7 @@ setUpload({error:true, success:false, loading:false})
                 <label for="avatar">Avatar: </label>
                 <input required type="text" id="avatar" name="avatar" value={avatar} onChange={(e)=>setAvatar(e.target.value)}></input>
                 <label for="file">Avatar file: </label>
-                <input required type="file" id="file" name="file" onChange={uploadFileHandler}></input>
+                <input type="file" id="file" name="file" onChange={uploadFileHandler}></input>
                 <label for="price">Price: </label>
                 <input required type="number" id="price" name="price" value={price} onChange={(e)=>setPrice(e.target.value)}></input>
                 <label for="brand">Brand: </label>
