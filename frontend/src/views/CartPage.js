@@ -6,18 +6,16 @@ import { faCoins, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom";
 
-
 function CartPage(props) {
   const { _id } = useParams();
   let params = new URLSearchParams(document.location.search);
   let qty = parseInt(params.get("qty"), 10);
   const cart = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.userData);
-  const { data } = useSelector((state) => state.userData);
   const items = cart.cartItems;
   const dispatch = useDispatch();
   const history = useHistory();
-  const emptyCartSvg = 
+  const emptyCartSvg = (
     <svg
       id="ffc6eb9a-0ec0-429c-85a8-ff38b44048bf"
       data-name="Layer 1"
@@ -204,8 +202,7 @@ function CartPage(props) {
       <rect x="218.2485" y="134.90779" width="2" height="18.5" fill="#f2f2f2" />
       <rect x="279.2485" y="134.90779" width="2" height="18.5" fill="#f2f2f2" />
     </svg>
-  ;
-
+  );
   useEffect(() => {
     if (_id) {
       dispatch(addItem(_id, qty));
@@ -222,65 +219,71 @@ function CartPage(props) {
 
   return (
     <main className="main">
-    {items.length==0 ? <div>{emptyCartSvg}<span className="noitems-warning">You cart is empty, <Link to="/">go shopping</Link></span></div> : <h2>Shopping cart</h2>}
+      {items.length == 0 ? (
+        <div>
+          {emptyCartSvg}
+          <span className="noitems-warning">
+            You cart is empty, <Link to="/">go shopping</Link>
+          </span>
+        </div>
+      ) : (
+        <h2>Shopping cart</h2>
+      )}
       <div className="cart">
-      
         <div className="cart__items">
-          { 
-            items.map((item) => {
-              return (
-                <div className="cart__item">
-                  <Link to={`/products/${item._id}`}>
+          {items.map((item) => {
+            return (
+              <div className="cart__item">
+                <Link to={`/products/${item._id}`}>
                   <img
-                  alt='product image'
+                    alt="product image"
                     style={{ float: "left", "margin-right": "1rem" }}
                     src={item.avatar}
                   />
-                  </Link>
-                  <Link className="Link" to={`/products/${item._id}`}> <h2>{item.name}</h2></Link>
-                  <label htmlFor="qty">Quantity:</label>
+                </Link>
+                <Link className="Link" to={`/products/${item._id}`}>
+                  {" "}
+                  <h2>{item.name}</h2>
+                </Link>
+                <label htmlFor="qty">Quantity:</label>
 
-                  <select
-                    style={{ "margin-left": "1rem" }}
-                    name="qty"
-                    id="qty"
-                    value={item.qty}
-                    onChange={(e) =>
-                      dispatch(addItem(item._id, e.target.value))
-                    }
-                  >
-                    {Array(item.available>10 ? 10 : item.available)
-                      .fill(null)
-                      .map((x, index) => {
-                        return (
-                          <option key={index + 1} value={index + 1}>
-                            {index + 1}
-                          </option>
-                        );
-                      })}
-                  </select>
-                  <p>
-                    Total price:
-                    <span style={{ visibility: "hidden" }}>iii</span>
-                    <FontAwesomeIcon icon={faCoins} /> {item.price * item.qty}$
-                  </p>
-                  <FontAwesomeIcon
-                    onClick={() => dispatch(removeItem(item._id))}
-                    style={{
-                      float: "right",
-                      position: "absolute",
-                      top: "50%",
-                      right: "0",
-                      color: "red",
-                      fontSize: "1.5rem",
-                    }}
-                    icon={faTimes}
-                  />
-                </div>
-              );
-            })
-           
-          }
+                <select
+                  style={{ "margin-left": "1rem" }}
+                  name="qty"
+                  id="qty"
+                  value={item.qty}
+                  onChange={(e) => dispatch(addItem(item._id, e.target.value))}
+                >
+                  {Array(item.available > 10 ? 10 : item.available)
+                    .fill(null)
+                    .map((x, index) => {
+                      return (
+                        <option key={index + 1} value={index + 1}>
+                          {index + 1}
+                        </option>
+                      );
+                    })}
+                </select>
+                <p>
+                  Total price:
+                  <span style={{ visibility: "hidden" }}>iii</span>
+                  <FontAwesomeIcon icon={faCoins} /> {item.price * item.qty}$
+                </p>
+                <FontAwesomeIcon
+                  onClick={() => dispatch(removeItem(item._id))}
+                  style={{
+                    float: "right",
+                    position: "absolute",
+                    top: "50%",
+                    right: "0",
+                    color: "red",
+                    fontSize: "1.5rem",
+                  }}
+                  icon={faTimes}
+                />
+              </div>
+            );
+          })}
         </div>
         {items.length != 0 ? (
           <div className="cart__actions">

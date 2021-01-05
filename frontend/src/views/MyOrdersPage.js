@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { faCoins, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getMyOrders } from "../actions/actions";
 
 function MyOrders() {
@@ -324,38 +322,49 @@ function MyOrders() {
     <main className="main main-myorders">
       {loading ? (
         <div className="loader"></div>
-      ) : orders ? orders.length!=0 ? (
-        <table className="admin__table">
-          <thead>
-            <tr>
-              <th>Order ID</th>
-              <th>Order price($)</th>
-              <th>Order payment status</th>
-              <th>Order delivery status</th>
-              <th>Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => {
-              return (
-                <tr>
-                  <td>{order._id}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
-                    {!order.isPaid
-                      ? "Not paid"
-                      : `Paid at ${order.paidAt.slice(0, 10)}`}
-                  </td>
-                  <td>{!order.isDelivered ? "Not delivered" : "Delivered"}</td>
-                  <td>
-                    <Link to={`/orders/${order._id}`}>See details</Link>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      ) : <div>{ordersSvg}<span className="noitems-warning">You don't have any orders, <Link to="/">go shopping</Link></span></div> : (
+      ) : orders ? (
+        orders.length != 0 ? (
+          <table className="admin__table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Order price($)</th>
+                <th>Order payment status</th>
+                <th>Order delivery status</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map((order) => {
+                return (
+                  <tr>
+                    <td>{order._id}</td>
+                    <td>{order.totalPrice}</td>
+                    <td>
+                      {!order.isPaid
+                        ? "Not paid"
+                        : `Paid at ${order.paidAt.slice(0, 10)}`}
+                    </td>
+                    <td>
+                      {!order.isDelivered ? "Not delivered" : "Delivered"}
+                    </td>
+                    <td>
+                      <Link to={`/orders/${order._id}`}>See details</Link>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : (
+          <div>
+            {ordersSvg}
+            <span className="noitems-warning">
+              You don't have any orders, <Link to="/">go shopping</Link>
+            </span>
+          </div>
+        )
+      ) : (
         <h1>404, we didn't find your orders</h1>
       )}
     </main>

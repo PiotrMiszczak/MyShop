@@ -1,21 +1,23 @@
-import React from 'react'
+import React from "react";
 
-
-function SubHeader(){
-    return(
+function SubHeader() {
+  return (
     <div className="subheader">
-        <div className="subheader__heading-wrapper">
+      <div className="subheader__heading-wrapper">
         <h2>
-            <span className="subheader__heading subheader__heading-primary">Get Yourself</span>
-            <span className="subheader__heading subheader__heading-secondary">Into Jeans</span>
+          <span className="subheader__heading subheader__heading-primary">
+            Get Yourself
+          </span>
+          <span className="subheader__heading subheader__heading-secondary">
+            Into Jeans
+          </span>
         </h2>
-        <a href='#seeproducts' className="button button-primary">See our products</a>
-        </div>
-        
-
-
+        <a href="#seeproducts" className="button button-primary">
+          See our products
+        </a>
+      </div>
     </div>
-    )
+  );
 }
 
-export default SubHeader
+export default SubHeader;
