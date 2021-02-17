@@ -33,6 +33,7 @@ function Navigation() {
     <div>
       {userInfo ? (
         <button
+        aria-label="open menu"
           className="navigation__button"
           onClick={() => setShowMenu(!showMenu)}
         >
@@ -40,11 +41,11 @@ function Navigation() {
         </button>
       ) : (
         <Link to={"/signin"}>
-          <button className="navigation__button">Sign in</button>
+          <button aria-label="sign in button" className="navigation__button">Sign in</button>
         </Link>
       )}
       <Link to={"/cart"}>
-        <button className="navigation__button">
+        <button aria-label="shopping cart button" className="navigation__button">
           <FontAwesomeIcon icon={faShoppingCart} />
           {items.length ? (
             <span className="navigation__button-cartitems">{items.length}</span>
@@ -58,6 +59,7 @@ function Navigation() {
               <div className="navigation__menu-header">
                 <h2>Hello {userInfo && userInfo.name}</h2>
                 <button
+                aria-label="close menu"
                   className="navigation__button"
                   onClick={() => setShowMenu(!showMenu)}
                 >
