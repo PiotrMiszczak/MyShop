@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { PayPalButton } from "react-paypal-button-v2";
-import { useHistory } from "react-router-dom";
 import { getOrder, payOrder, deliverOrder } from "../actions/actions";
 
 
