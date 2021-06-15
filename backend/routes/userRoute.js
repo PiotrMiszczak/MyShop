@@ -1,8 +1,8 @@
 import express from "express";
-import User from "../models/userModel";
-import { getToken } from "../util";
+import User from "../models/userModel.js";
+import { getToken } from "../util.js";
 import bcrypt from "bcrypt";
-import data from "../data";
+import data from "../data.js";
 
 const router = express.Router();
 

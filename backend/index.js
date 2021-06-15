@@ -3,19 +3,20 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import path from "path";
-import userRouter from "./routes/userRoute";
-import uploadRouter from "./routes/uploadRoute";
-import Product from "./models/productModel";
-import Order from "./models/orderModel";
-import { isAuth, isAdmin } from "./util";
-import config from "../config";
+import userRouter from "./routes/userRoute.js";
+import uploadRouter from "./routes/uploadRoute.js";
+import Product from "./models/productModel.js";
+import Order from "./models/orderModel.js";
+import { isAuth, isAdmin } from "./util.js";
+import config from "../config.js";
 
 
-import data from "./data";
+import data from "./data.js";
 
 // CONFIGURATION
 
 dotenv.config();
+
 
 const MONGODBURL = config.MONGODB_URL;
 mongoose
