@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { listOrders } from "../actions/actions";
 
 function AllOrders() {
-  const { orders, loading, error } = useSelector((state) => state.listOrders);
+  const { orders, loading } = useSelector((state) => state.listOrders);
   const { userInfo } = useSelector((state) => state.userData);
   const dispatch = useDispatch();
   const history = useHistory();

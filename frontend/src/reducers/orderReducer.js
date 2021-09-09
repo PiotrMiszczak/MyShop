@@ -36,7 +36,7 @@ export const saveOrderReducer = (state = {}, action) => {
       return { loading: false, order: null, error: action.payload };
     case ORDER_RESET:
       return {};
-
+      
     default:
       return state;
   }
@@ -69,7 +69,7 @@ export const payOrderReducer = (state = { success: false }, action) => {
       return { loading: false, error: false, success: true };
     case ORDER_PAY_ERROR:
       return { loading: false, order: null, error: action.payload };
-    case ORDER_PAY_RESET:
+    
 
     default:
       return state;

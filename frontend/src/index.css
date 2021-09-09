@@ -9,7 +9,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Commissioner';
+  font-family: "Commissioner";
   color: black;
   height: 100%; }
 
@@ -47,7 +47,7 @@ body {
   height: 4rem;
   color: #4e4a4a; }
   .header h1 {
-    font-family: 'Big Shoulders Stencil Text';
+    font-family: "Big Shoulders Stencil Text";
     font-style: italic;
     font-size: 2.5rem;
     letter-spacing: 4px;
@@ -59,7 +59,6 @@ body {
 .subheader {
   height: 80vh;
   background-image: linear-gradient(to left, rgba(94, 139, 186, 0.804), rgba(18, 52, 89, 0.804)), url(./images/jeans.jpg);
-  /*NOWE*/
   background-size: cover;
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
@@ -80,15 +79,15 @@ body {
       font-size: 5rem;
       animation-name: moveFromLeft;
       animation-duration: 1s;
-      animation-delay: .2s;
+      animation-delay: 0.2s;
       animation-timing-function: cubic-bezier(0, 0.56, 0.265, 0.835);
       animation-fill-mode: backwards; }
     .subheader__heading-secondary {
       font-size: 3rem;
       letter-spacing: 1.3rem;
       animation-name: moveFromRight;
-      animation-duration: .5s;
-      animation-delay: .7s;
+      animation-duration: 0.5s;
+      animation-delay: 0.7s;
       animation-timing-function: cubic-bezier(0, 0.56, 0.265, 0.835);
       animation-fill-mode: backwards; }
 
@@ -111,7 +110,8 @@ body {
     border-color: #2fff36;
     cursor: pointer; }
 
-.button-primary, .button-primary:visited {
+.button-primary,
+.button-primary:visited {
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
@@ -126,10 +126,12 @@ body {
   animation-delay: 1.2s;
   animation-timing-function: linearnpm;
   animation-fill-mode: backwards; }
-  .button-primary:hover, .button-primary:visited:hover {
+  .button-primary:hover,
+  .button-primary:visited:hover {
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.311);
     transform: translateY(3px); }
-  .button-primary:active, .button-primary:visited:active {
+  .button-primary:active,
+  .button-primary:visited:active {
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.311);
     transform: translateY(1px); }
 
@@ -166,8 +168,8 @@ body {
     @media (max-width: 680px) {
       .main__product {
         width: 70%;
-        margin: 0 auto;
-        min-width: 280px; } }
+        min-width: 280px;
+        margin-bottom: 12px; } }
     .main__product img {
       display: block;
       margin: 0 auto;
@@ -179,7 +181,9 @@ body {
       grid-template-columns: repeat(auto-fit, minmax(280px, 0.5fr)); }
       @media (max-width: 680px) {
         .main__product-wrapper {
-          display: block; } }
+          display: flex;
+          flex-direction: column;
+          align-items: center; } }
     .main__product-data {
       padding-left: 1rem;
       padding-bottom: 1rem;
@@ -453,7 +457,8 @@ tbody tr {
 tbody tr:nth-child(odd) {
   background-color: #bdb6b6; }
 
-.admin__table td, th {
+.admin__table td,
+th {
   padding: 4px; }
 
 .delete__warning {
@@ -471,8 +476,7 @@ tbody tr:nth-child(odd) {
   height: 5px;
   background-color: #bdb6b6;
   margin-bottom: 2 runrem;
-  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-  /*NOWE*/ }
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
   .progress-active {
     background-color: #4e4a4a; }
     .progress-active-text {
@@ -491,7 +495,7 @@ tbody tr:nth-child(odd) {
   display: flex;
   justify-content: flex-start; }
 
-input[type=radio] {
+input[type="radio"] {
   width: 15px;
   margin-right: 5px; }
 
@@ -578,10 +582,6 @@ input[type=radio] {
   0% {
     transform: translateX(-150px);
     opacity: 0; }
-  /*80%{
-      transform: translateX(10px);
-      opacity: 1;
-    }*/
   100% {
     transform: translateX(0px);
     opacity: 1; } }
@@ -590,10 +590,6 @@ input[type=radio] {
   0% {
     transform: translateX(150px);
     opacity: 0; }
-  /* 80%{
-      transform: translateX(-10px);
-      opacity: 1;
-    }*/
   100% {
     transform: translateX(0px);
     opacity: 1; } }

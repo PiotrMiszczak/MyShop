@@ -38,7 +38,7 @@ function ProductCard(props) {
     >
       <Link to={`/products/${props._id}`}>{mask}</Link>
       <img
-        alt="product image"
+        alt="product"
         className="product__image"
         src={props.image}
       ></img>

@@ -9,7 +9,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [rePassword, setRePassword] = useState("");
   const dispatch = useDispatch();
-  const { userInfo, loading, error } = useSelector((state) => state.userData);
+  const { userInfo } = useSelector((state) => state.userData);
   let params = new URLSearchParams(document.location.search);
   const redirect = params.get("redirect");
   let history = useHistory();

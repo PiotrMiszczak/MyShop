@@ -6,7 +6,6 @@ import { getRequest } from "../actions/actions";
 
 function HomePage() {
   const products = useSelector((state) => state.products);
-  const { userInfo } = useSelector((state) => state.userData);
   const { data, loading, error } = products;
   const dispatch = useDispatch();
 
