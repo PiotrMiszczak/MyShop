@@ -1,1 +1,1 @@
-web: babel-node --experimental-modules backend/server.js
+web: babel-node backend/index.js
