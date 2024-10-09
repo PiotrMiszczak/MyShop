@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { saveShipping } from "../actions/actions";
 import ProgressBar from "../components/ProgressBar";
 
@@ -10,12 +10,12 @@ function ShippingPage(props) {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const dispatch = useDispatch();
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function handleShipping(e) {
     e.preventDefault();
     dispatch(saveShipping({ adress, postalCode, city, country }));
-    history.push("/payment");
+    navigate("/payment");
   }
 
   return (

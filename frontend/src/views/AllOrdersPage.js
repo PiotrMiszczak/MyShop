@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { listOrders } from "../actions/actions";
@@ -7,10 +7,10 @@ function AllOrders() {
   const { orders, loading } = useSelector((state) => state.listOrders);
   const { userInfo } = useSelector((state) => state.userData);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   if (!userInfo || !userInfo.isAdmin) {
-    history.push("/");
+    navigate("/");
   }
 
   useEffect(() => {

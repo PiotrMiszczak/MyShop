@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { addItem, removeItem } from "../actions/actions";
 import { faCoins, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,7 @@ function CartPage(props) {
   const { userInfo } = useSelector((state) => state.userData);
   const items = cart.cartItems;
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const emptyCartSvg = (
     <svg
       id="ffc6eb9a-0ec0-429c-85a8-ff38b44048bf"
@@ -211,9 +211,9 @@ function CartPage(props) {
 
   function handleCheckout() {
     if (userInfo) {
-      history.push("/shipping");
+      navigate("/shipping");
     } else {
-      history.push("/signin?redirect=shipping");
+      navigate("/signin?redirect=shipping");
     }
   }
 

@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { savePayment } from "../actions/actions";
 import ProgressBar from "../components/ProgressBar";
 
 function ShippingPage(props) {
   const [payment, setPayment] = useState("");
   const dispatch = useDispatch();
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function handlePayment(e) {
     e.preventDefault();
     dispatch(savePayment(payment));
-    history.push("/summary");
+    navigate("/summary");
   }
 
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../actions/actions";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Register() {
   const [password, setPassword] = useState("");
@@ -12,15 +12,15 @@ function Register() {
   const { userInfo } = useSelector((state) => state.userData);
   let params = new URLSearchParams(document.location.search);
   const redirect = params.get("redirect");
-  let history = useHistory();
+  let navigate = useNavigate();
   let passInvalid = null;
 
   useEffect(() => {
     if (userInfo) {
       if (redirect) {
-        history.push(`/${redirect}`);
+        navigate(`/${redirect}`);
       } else {
-        history.push("/");
+        navigate("/");
       }
     }
   }, [userInfo]);

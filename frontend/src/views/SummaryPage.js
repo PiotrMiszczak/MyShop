@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProgressBar from "../components/ProgressBar";
 import { createOrder, ORDER_RESET } from "../actions/actions";
 
@@ -15,23 +15,23 @@ function SummaryPage(props) {
   );
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const itemsPrice = cartItems.reduce((a, b) => a + Number(b.qty) * b.price, 0);
   const deliveryPrice = itemsPrice > 200 ? 0 : 20;
   const totalPrice = itemsPrice + deliveryPrice;
 
   if (!userInfo) {
-    history.push("/signin");
+    navigate("/signin");
   } else if (!shipping) {
-    history.push("/shipping");
+    navigate("/shipping");
   } else if (!payment) {
-    history.push("/payment");
+    navigate("/payment");
   }
 
   useEffect(() => {
     if (order) {
-      history.push(`/orders/${order._id}`);
+      navigate(`/orders/${order._id}`);
       dispatch({ type: ORDER_RESET });
     }
   }, [order]);

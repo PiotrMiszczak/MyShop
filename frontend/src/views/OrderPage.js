@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { PayPalButton } from "react-paypal-button-v2";
+//import { PayPalButton } from "react-paypal-button-v2";
 import { getOrder, payOrder, deliverOrder } from "../actions/actions";
 
 
@@ -24,7 +24,7 @@ function OrderPage(props) {
   } = useSelector((state) => state.orderDeliver);
   const { _id } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function paymentHandler() {
     dispatch(payOrder(_id));
@@ -34,7 +34,7 @@ function OrderPage(props) {
   }
 
   if (!userInfo) {
-    history.push("/");
+    navigate("/");
   }
 
   useEffect(() => {
@@ -130,10 +130,7 @@ function OrderPage(props) {
               <p>...Loading Paypal</p>
             ) : (
               <div className="paypal-wrapper">
-                <PayPalButton
-                  onSuccess={paymentHandler}
-                  amount={order.totalPrice}
-                ></PayPalButton>{" "}
+                <button>Tu byl paypal button v2</button>
               </div>
             )
           ) : null}

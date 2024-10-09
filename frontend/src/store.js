@@ -1,6 +1,6 @@
 
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
+import {thunk} from 'redux-thunk';
 import Cookie from 'js-cookie';
 import productListReducer from './reducers/productListReducer';
 import productItemReducer from './reducers/productItemReducer';

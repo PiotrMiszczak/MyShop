@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   faBars,
@@ -15,7 +15,7 @@ function Navigation() {
   const cart = useSelector((state) => state.cart);
   const items = cart.cartItems;
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.userData);
   const transitions = useTransition(showMenu, null, {
     from: { transform: "translateX(100%)" },
@@ -26,7 +26,7 @@ function Navigation() {
   function signOutHandler() {
     setShowMenu(false);
     dispatch(signOut());
-    history.push("/");
+    navigate("/");
   }
 
   return (
