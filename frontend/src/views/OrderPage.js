@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-//import { PayPalButton } from "react-paypal-button-v2";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { getOrder, payOrder, deliverOrder } from "../actions/actions";
 
 
@@ -130,7 +130,7 @@ function OrderPage(props) {
               <p>...Loading Paypal</p>
             ) : (
               <div className="paypal-wrapper">
-                <button>Tu byl paypal button v2</button>
+                <PayPalButtons style={{ layout: "horizontal" }} />
               </div>
             )
           ) : null}
@@ -145,11 +145,13 @@ function OrderPage(props) {
   ) : null;
   const errorWarning = error ? <h1>{error}</h1> : null;
   return (
+    <PayPalScriptProvider options={{ clientId: "test" }}>
     <div>
       {loader}
       {content}
       {errorWarning}
     </div>
+    </PayPalScriptProvider>
   );
 }
 
