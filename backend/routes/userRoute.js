@@ -7,7 +7,7 @@ import data from "../data.js";
 const router = express.Router();
 
 router.get("/sample", async (req, res) => {
-  await User.remove({});
+  await User.deleteMany({});
   const createdUsers = await User.insertMany(data.users);
   res.send({ createdUsers });
 });

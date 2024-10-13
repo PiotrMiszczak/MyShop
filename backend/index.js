@@ -12,20 +12,22 @@ import config from "../config.js";
 
 
 import data from "./data.js";
+import { error } from "console";
 
 // CONFIGURATION
 
 dotenv.config();
 
 
-const MONGODBURL = config.MONGODB_URL;
+const MONGODBURL = process.env.MONGODB_URL;
+console.log(MONGODBURL);
 mongoose
   .connect(MONGODBURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-  })
-  .catch((error) => console.log("err2"));
+  }).then(()=>console.log("Connected to MongoDB"))
+  .catch((error)=>console.log("tutaj:"+error.message));
 
 const app = express();
 app.use(bodyParser.json());
@@ -213,14 +215,14 @@ const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // SERVING FILES ON HEROKU
-
+/*
 app.use(express.static(path.join(__dirname, "/frontend/build")));
 app.get("*", (req, res) =>
   res.sendFile(path.join(__dirname, "/frontend/build/index.html"))
 );
 
 // INITIALIZING SERVER
-
+*/
 app.listen(process.env.PORT || 5000, () =>
   console.log("Server started at http://localhost:5000")
 );
